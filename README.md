@@ -1,26 +1,28 @@
 # 陈源浩 · qiandewucimi-cpu
 
-**2027 届 · FDE（AI 交付工程师）** · 用 Agent 解决真实业务问题
-正在寻找 FDE / AI 应用工程方向校招岗位 · 上海，可出差 / 驻场 / 客户现场交付
+**2027 届本科生 · AI 交付工程师（FDE）/ AI 解决方案方向** · 上海，可出差 / 驻场
+上海理工大学 管理科学（本科）｜国家励志奖学金 · 专业前 21%
 
 把"BOM → 采购 PO"这类高频、易错、依赖人工核对的流程，改造成**模型编排工具、确定性代码兜底**的 Agent 应用——这是我正在做的事，也是我最想做的事。
 
 ## 精选项目
 
-**[erp-procurement-agent](https://github.com/qiandewucimi-cpu/erp-procurement-agent) · 外贸 ERP 安全操作 Agent（主推）**
-自然语言对话即可生成采购 PO：模型自主编排工具，金额计算、业务校验与写入口令由确定性代码兜底——断网或模型幻觉也不会造成错误写入。
+**企业培训智能问答助手 · 飞书知识库机器人**（本地运行中，可现场演示）
+把分散的培训资料变成群内 @ 即答的飞书机器人：答案强制带来源引用、免公网部署，支持多轮追问。
 
-- 技术：FastAPI · Streamlit · SQLite · Function Calling Agent · MCP（7 个工具）· RAG · Docker
-- 质量：58 项单元测试 · 覆盖率 89% · 能力评测 8/8 与 15/15 通过 · Docker 冒烟 8/8
-- 部署：支持 Ollama 本地离线部署与云端智谱；可选飞书长连接机器人，免公网接入
-- 演示与启动：见仓库 README（含 UI 工作台、Docker Compose、MCP 验证）
+- 数据工程：173 份/153MB 资料清洗，OCR 566 张截图，产出 121 份/105.2 万字；8 类敏感信息脱敏 4,667 处、零残留
+- 知识库：LLM-Wiki 编译式方法论，119 份语料编译为可溯源互链知识库，替代临时检索 RAG，支持一键重建
+- 评测：自建 22 题六类评测集（概念/对比/流程/操作/报价配比/机制），脚本自动判定；batch1 基线：命中 11/15、幻觉 0/15（95% 置信上界 18.1%）、引用可溯源率 100%
+- 落地：飞书自建应用机器人（WebSocket 长连接、免公网），群内 @ 即答，卡片展示答案与来源，支持多轮追问
+- 状态：源码打磨中暂未开源，支持现场演示飞书机器人
 
-**[企业培训智能问答助手 · 飞书知识库机器人](https://github.com/qiandewucimi-cpu)（可现场演示）**
-把分散的培训资料变成群内 @ 即答的飞书知识库机器人：资料清洗 + 截图 OCR + 编译式知识库，答案 100% 带来源引用，免公网部署。
+**[erp-procurement-agent](https://github.com/qiandewucimi-cpu/erp-procurement-agent) · 外贸 ERP 安全操作 Agent（开源主推）**
+基于实习场景、以合成数据构建 BOM→PO 原型：模型自主编排工具，金额计算、业务校验与写入口令由确定性代码兜底——断网或模型幻觉也不会造成错误写入。
 
-- 数据：173 份资料清洗、566 张截图 OCR、8 类敏感信息脱敏、零残留
-- 评测：自建 22 题六类评测集，实测幻觉率 0%
-- 状态：本地运行中，源码打磨中暂未开源，支持现场演示飞书机器人
+- 技术：FastAPI · Streamlit · SQLite · Function Calling 工具循环 · FastMCP（7 工具）· RAG · Docker · Ollama 本地部署
+- 质量：58 项单元测试 · 覆盖率 89% · 能力评测 15/15 · Docker 冒烟 8/8
+- 安全：写前确认、幂等写入、审计回滚、异常 BOM 工具层阻断；密钥仅落 .env 并完成轮换
+- 部署：支持 Ollama 本地离线与云端智谱；飞书长连接对话入口（免公网），支持文件直传与多轮上下文
 
 **其他项目**
 
@@ -34,13 +36,16 @@
 
 ## 实习经历
 
-**客户成功实习生** · 牛客网（AI 招聘产品）｜2026.03–2026.07
-- 直接对接 3 家客户、参与服务 8+ 家头部互联网及上市企业
-- 负责 AI 寻聘产品部署与配置跟踪、客户答疑、模型效果调整与复盘，完成 10+ 份分析/复盘材料
+**客户成功实习生** · 北京牛客科技（AI 招聘产品）｜2026.03–2026.07
+- 服务 8+ 家企业客户，直连 3 家消费/宠物/教育行业客户：AI 寻聘产品配置、答疑、效果跟踪与试测复盘
+- 基于 Excel/透视表/BI 产出材料，制作 20+ 家企业校招复盘 PPT 交付
 
-**DLS 数据助理（实习）** · 上海荣恒国际贸易（外贸 ERP）｜2026.07–2026.08
-- 培训/测试环境完成订单→理单→核价→配置 CP 全流程，独立输出 3 份系统可导入 BOM
-- 将客户下单至理单拆解为 9 环节并完成脱稿考核汇报；提出 ERP Agent 构想，实习后已落地为开源项目
+**DLS 数据助理（实习）** · 上海荣恒国际贸易（外贸 ERP）｜2026.07–2026.09
+- 梳理订单/理单/核料/核价全流程，拆解为 9 环节，输出 16 页考核汇报；处理多款式 BOM，输出 3 份可导入文件
+- 完成 5 份报价单、4 份核料单并推动技审通过；提出飞书知识库与 ERP Agent 方案（实习后已落地为开源项目）
+
+**运营 & 教练（实习）** · Woodpark 运动公园｜2025.10–2026.02
+- 策划执行全国陆冲循环赛（单场 60 人），沉淀可复用活动 SOP；搭建 Excel 客流看板驱动排期
 
 ## 技术栈
 
@@ -52,7 +57,12 @@
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white)
 
-MCP · RAG · SQLite · Streamlit · Ollama 本地部署 · Faster-Whisper · PaddleOCR
+MCP · RAG · LLM-Wiki · SQLite · Streamlit · Ollama 本地部署 · Faster-Whisper · PaddleOCR · Function Calling · 飞书开放平台
+
+## 荣誉
+
+- 全国大学生统计建模大赛 · 二等奖
+- 国家励志奖学金、学习优秀奖学金（多次）｜专业前 21%
 
 ## 做事方式
 
@@ -63,4 +73,4 @@ MCP · RAG · SQLite · Streamlit · Ollama 本地部署 · Faster-Whisper · Pa
 
 ## 联系
 
-qiandewucimi@gmail.com
+Qiandewucimi@163.com（投递邮箱）· qiandewucimi@gmail.com（GitHub）
