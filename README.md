@@ -10,19 +10,27 @@
 **企业培训智能问答助手 · 飞书知识库机器人**（本地运行中，可现场演示）
 把分散的培训资料变成群内 @ 即答的飞书机器人：答案强制带来源引用、免公网部署，支持多轮追问。
 
-- 数据工程：173 份/153MB 资料清洗，OCR 566 张截图，产出 121 份/105.2 万字；8 类敏感信息脱敏 4,667 处、零残留
-- 知识库：LLM-Wiki 编译式方法论，119 份语料编译为可溯源互链知识库，替代临时检索 RAG，支持一键重建
-- 评测：自建 22 题六类评测集（概念/对比/流程/操作/报价配比/机制），脚本自动判定；batch1 基线：命中 11/15、幻觉 0/15（95% 置信上界 18.1%）、引用可溯源率 100%
-- 落地：飞书自建应用机器人（WebSocket 长连接、免公网），群内 @ 即答，卡片展示答案与来源，支持多轮追问
+- 数据工程：处理 173 份/153MB 多源资料及 633 张界面截图，结合 GLM-4V OCR 产出 121 份/105.2 万字符语料；8 类敏感信息命中 4,667 处，输入与公开评测产物复核零残留
+- 知识库：将 119 份去重语料增量编译为 822 页可溯源互链 Wiki，构建关键词 + 知识图谱 RAG；支持全量重建、中断续跑、失败重排和知识固化，术语桥接 A/B 由 0/5 提升至 4/5
+- 评测：自建 22 题六类评测集与 13 题拒答专项，命中率由 73.3% 提升至稳定 85.7%（最佳单轮 90.5%），幻觉 0/21、引用可溯源 22/22；响应 P50 由 61.5s 降至 18.0s
+- 落地：飞书 WebSocket 长连接机器人，支持群内 @问答、引用卡片、多轮会话、进度更新、超时重试、出站脱敏和匿名用量埋点
 - 状态：源码打磨中暂未开源，支持现场演示飞书机器人
 
 **[erp-procurement-agent](https://github.com/qiandewucimi-cpu/erp-procurement-agent) · 外贸 ERP 安全操作 Agent（开源主推）**
 基于实习场景、以合成数据构建 BOM→PO 原型：模型自主编排工具，金额计算、业务校验与写入口令由确定性代码兜底——断网或模型幻觉也不会造成错误写入。
 
-- 技术：FastAPI · Streamlit · SQLite · Function Calling 工具循环 · FastMCP（7 工具）· RAG · Docker · Ollama 本地部署
-- 质量：58 项单元测试 · 覆盖率 89% · 能力评测 15/15 · Docker 冒烟 8/8
-- 安全：写前确认、幂等写入、审计回滚、异常 BOM 工具层阻断；密钥仅落 .env 并完成轮换
-- 部署：支持 Ollama 本地离线与云端智谱；飞书长连接对话入口（免公网），支持文件直传与多轮上下文
+- 技术：FastAPI · Streamlit · SQLite/HTTP 可替换 ERP Adapter · Function Calling · MCP（8 工具）· RAG · Docker
+- 质量：98/98 项单元测试 · 覆盖率 89% · 40 条能力与安全评测最近一次全绿，其中 25 条确定性评测进入 CI
+- 安全：RBAC 职责分离状态机、可信 action_id、精确确认口令、并发幂等、审计回滚与异常 BOM 工具层阻断
+- 交付：FastAPI / Streamlit / MCP / 飞书复用同一能力，提供结构化日志、延迟指标、部署手册和 5 分钟演示脚本
+
+**[intelligent-data-analysis-assistant](https://github.com/qiandewucimi-cpu/intelligent-data-analysis-assistant) · LLM 数据分析沙箱引擎**
+把“自然语言分析本地 Excel/CSV”做成可评测的受控执行链路：模型生成 pandas 代码，但不可信代码不能在主应用内裸跑。
+
+- 执行安全：AST 白名单校验 + 一次性子进程 + 超时/内存看门狗，按进程树强杀；子进程结果仅以 JSON 回传
+- 评测驱动：18 题六类评测集，glm-4-flash 一轮成功率 83.3%（15/18）、P50 16.4s，全程零超时零拦截
+- 数据边界：默认脱敏，仅外发列名与聚合统计；CSV/Excel 导出转义公式前缀，密钥仅存本机 `.env`
+- 工程设计：零 UI 依赖引擎同时支持 Streamlit 与 `python -m analyzer` CLI，移除 LangChain 后直接依赖由 15 降至 13
 
 **其他项目**
 
@@ -32,7 +40,6 @@
 | [fde-mentor](https://github.com/qiandewucimi-cpu/fde-mentor) | 面向 Codex 的 FDE 教学 Skill：按能力设计路线，练习必须真实验证 | Python · Skill · CI |
 | [togethertrip](https://github.com/qiandewucimi-cpu/togethertrip) | 隐私优先的家庭旅行规划器：固定锚点 + 家庭分流 + 交通优化 | React 19 · Cloudflare Workers |
 | [douyin-favorites-knowledge-skill](https://github.com/qiandewucimi-cpu/douyin-favorites-knowledge-skill) | 抖音收藏转本地知识笔记：转写 + OCR + 可恢复队列，本地优先 | faster-whisper · PaddleOCR · SQLite |
-| [intelligent-data-analysis-assistant](https://github.com/qiandewucimi-cpu/intelligent-data-analysis-assistant) | 本地 Excel/CSV 智能分析助手：问答 + 图表 + 报告，默认脱敏 | Streamlit · pandas · LLM |
 
 ## 实习经历
 
