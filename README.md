@@ -11,22 +11,22 @@
 ### 01 · [外贸采购 Agent](https://github.com/qiandewucimi-cpu/erp-procurement-agent)
 
 把反复核对物料、数量和金额的 BOM 流程，转为可预览、可审批、可追溯的采购草稿。
-- **我的工作：**梳理业务流程、定义模型与人工的操作边界、设计验收场景，并根据实际测试反馈推进修复。
-- **关键设计：**模型编排工具，确定性代码计算金额和校验；使用合成数据与 SQLite，未接入生产 ERP。
+- **我的工作：** 梳理业务流程、定义模型与人工的操作边界、设计验收场景，并根据实际测试反馈推进修复。
+- **关键设计：** 模型编排工具，确定性代码计算金额和校验；使用合成数据与 SQLite，未接入生产 ERP。
 - **查看：**[64秒执行回放](https://github.com/qiandewucimi-cpu/erp-procurement-agent/blob/main/docs/demo/README.md) · [离线验证与边界](https://github.com/qiandewucimi-cpu/erp-procurement-agent/blob/main/docs/验证索引.md) · [架构决策](https://github.com/qiandewucimi-cpu/erp-procurement-agent/blob/main/docs/03_架构决策记录_ADR.md)
 
 ### 02 · [企业培训知识库问答](https://github.com/qiandewucimi-cpu/smart-qa-assistant)
 
 把分散的文档和截图整理成可检索的知识，通过飞书回答业务问题并提供来源。
-- **我的工作：**明确资料范围和脱敏要求，用业务问法测试回答、追问与拒答，推动术语对照和入口迭代。
-- **关键证据：**公开历史评测与失败分析；私有语料不公开，离线验收与在线问答验证分开说明。
+- **我的工作：** 明确资料范围和脱敏要求，用业务问法测试回答、追问与拒答，推动术语对照和入口迭代。
+- **关键证据：** 公开历史评测与失败分析；私有语料不公开，离线验收与在线问答验证分开说明。
 - **查看：**[架构与演示](https://github.com/qiandewucimi-cpu/smart-qa-assistant/blob/main/docs/架构与演示.md) · [评测证据](https://github.com/qiandewucimi-cpu/smart-qa-assistant/blob/main/eval/README.md)
 
 ### 03 · [LLM 数据分析助手](https://github.com/qiandewucimi-cpu/intelligent-data-analysis-assistant)
 
 用自然语言完成 CSV / Excel 分析，将生成的 Pandas 代码放入受限子进程执行。
-- **我的工作：**提出数据与执行边界，设计分析问题、核对统计口径，并通过 Web / CLI 实测反馈问题。
-- **关键证据：**18 题历史评测首轮通过 15 题，保留失败归因；本地执行，模型调用仍涉及信息外发，具体范围见项目说明。
+- **我的工作：** 提出数据与执行边界，设计分析问题、核对统计口径，并通过 Web / CLI 实测反馈问题。
+- **关键证据：** 18 题历史评测首轮通过 15 题，保留失败归因；本地执行，模型调用仍涉及信息外发，具体范围见项目说明。
 - **查看：**[快速运行](https://github.com/qiandewucimi-cpu/intelligent-data-analysis-assistant#快速开始) · [设计取舍](https://github.com/qiandewucimi-cpu/intelligent-data-analysis-assistant/blob/main/docs/DESIGN_DECISIONS.md) · [历史评测](https://github.com/qiandewucimi-cpu/intelligent-data-analysis-assistant/blob/main/analyzer/evals/results/eval_report.md)
 
 ## 本人贡献与实现方式
